@@ -57,6 +57,18 @@ block102=master.get(102,'')
 check('Manus15s_102 tail-frame contract',('Manus15s_102_LastFrame_360.png (EXPORT_MANUS15S_102_FRAME_360)' in block102 and 'Shot_153_LastFrame.png (EXPORT_SHOT_153_FRAME_240)' not in block102),'Manus F360 is the required output; Shot F240 is not mislabelled as it')
 block119=master.get(119,'')
 check('Manus15s_119 VO closed-mouth direction',('画外合声VO' in block119 and '全程闭口、不做口型' in block119),'final chorus is off-screen voice-over; visible backs remain closed-mouth')
+style_tag='【全片统一视觉风格与语言总则】'
+style_counts={n:master.get(n,'').count(style_tag) for n in range(1,121)}
+style_ok=all(v==1 for v in style_counts.values())
+check('uniform style/language rule in every prompt',style_ok,f'{sum(v==1 for v in style_counts.values())}/120 prompts contain exactly one canonical rule')
+named_style=any(t in '\n'.join(master.values()) for t in ['新海诚','新海誠','京阿尼','Shinkai'])
+check('original style language without artist-name prompts',not named_style,'prompts use shared original art-direction language rather than named creator/studio imitation')
+language_rule='画面生成描述、动作、机位、光线和场景执行语统一使用简体中文'
+language_ok=all(language_rule in master.get(n,'') for n in range(1,121))
+check('consistent Chinese image-instruction language',language_ok,'all 120 prompts declare Chinese visual directions; Japanese dialogue and technical IDs remain fixed exceptions')
+visual_standard=(ROOT/'V27_统一视觉与语言规范.md').read_text(encoding='utf-8')
+visual_ok=all(x in visual_standard for x in ['原创','简体中文','试片','塑料皮肤'])
+check('visual and language standard available',visual_ok,'stand-alone art-direction and language bible is present')
 all_text='\n'.join(p.read_text(encoding='utf-8') for p in ROOT.rglob('*.md'))
 clean_ok=('drive.google.com' not in all_text and 'File ID:' not in all_text and 'Folder ID:' not in all_text and not re.search(r'(?<!\w)V(?:0?[1-9]|1\d|2[0-6])(?!\w)',all_text))
 check('single clean V27 environment',clean_ok,'no Drive URLs/IDs or prior version labels in project markdown')

@@ -75,6 +75,26 @@
       "detail": "final chorus is off-screen voice-over; visible backs remain closed-mouth"
     },
     {
+      "check": "uniform style/language rule in every prompt",
+      "status": "pass",
+      "detail": "120/120 prompts contain exactly one canonical rule"
+    },
+    {
+      "check": "original style language without artist-name prompts",
+      "status": "pass",
+      "detail": "prompts use shared original art-direction language rather than named creator/studio imitation"
+    },
+    {
+      "check": "consistent Chinese image-instruction language",
+      "status": "pass",
+      "detail": "all 120 prompts declare Chinese visual directions; Japanese dialogue and technical IDs remain fixed exceptions"
+    },
+    {
+      "check": "visual and language standard available",
+      "status": "pass",
+      "detail": "stand-alone art-direction and language bible is present"
+    },
+    {
       "check": "single clean V27 environment",
       "status": "pass",
       "detail": "no Drive URLs/IDs or prior version labels in project markdown"
