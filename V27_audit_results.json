@@ -1,8 +1,12 @@
 {
   "audit": "V27 clean production script package audit",
-  "script_package_ready_to_start_video": true,
+  "script_package_ready_to_start_video": false,
   "final_video_delivered": false,
   "platform_publication_performed": false,
+  "blocking_checks": [
+    "English model-execution prompt coverage",
+    "English prompt review ledger and approval"
+  ],
   "checks": [
     {
       "check": "Manus15s block coverage",
@@ -85,9 +89,9 @@
       "detail": "prompts use shared original art-direction language rather than named creator/studio imitation"
     },
     {
-      "check": "consistent Chinese image-instruction language",
+      "check": "English model-execution layer declared in every source prompt",
       "status": "pass",
-      "detail": "all 120 prompts declare Chinese visual directions; Japanese dialogue and technical IDs remain fixed exceptions"
+      "detail": "all 120 Chinese source prompts require faithful English model-facing instructions; Japanese dialogue and technical data remain verbatim"
     },
     {
       "check": "visual and language standard available",
@@ -95,9 +99,9 @@
       "detail": "stand-alone art-direction and language bible is present"
     },
     {
-      "check": "single clean V27 environment",
+      "check": "legacy cloud references across all text files",
       "status": "pass",
-      "detail": "no Drive URLs/IDs or prior version labels in project markdown"
+      "detail": "136 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
     },
     {
       "check": "local image asset set",
@@ -108,7 +112,17 @@
       "check": "platform production workflow",
       "status": "pass",
       "detail": "Bilibili, Douyin, AI disclosure, and current five-second generation adaptation documented"
+    },
+    {
+      "check": "English model-execution prompt coverage",
+      "status": "issue",
+      "detail": "0/120 numbered English prompt files present in deliverables/model_prompts_en"
+    },
+    {
+      "check": "English prompt review ledger and approval",
+      "status": "issue",
+      "detail": "0/120 approved; hash-bound ledger failures=['001: missing/stale English prompt hash', '001: review fields not PASS', '001: missing director approval/reviewer/date', '002: missing/stale English prompt hash', '002: review fields not PASS']"
     }
   ],
-  "issue_count": 0
+  "issue_count": 2
 }

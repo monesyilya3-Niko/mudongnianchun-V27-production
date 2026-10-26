@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic structural audit of the local V27 script candidate; no cloud writes."""
 from pathlib import Path
-import hashlib, json, re, sys
+import csv, hashlib, json, re, sys
 ROOT = Path(__file__).resolve().parent
 D = ROOT / 'deliverables'
 issues=[]; checks=[]
@@ -63,23 +63,58 @@ style_ok=all(v==1 for v in style_counts.values())
 check('uniform style/language rule in every prompt',style_ok,f'{sum(v==1 for v in style_counts.values())}/120 prompts contain exactly one canonical rule')
 named_style=any(t in '\n'.join(master.values()) for t in ['新海诚','新海誠','京阿尼','Shinkai'])
 check('original style language without artist-name prompts',not named_style,'prompts use shared original art-direction language rather than named creator/studio imitation')
-language_rule='画面生成描述、动作、机位、光线和场景执行语统一使用简体中文'
+language_rule='面向视频生成模型的执行提示须使用英文并忠实表达以下指令'
 language_ok=all(language_rule in master.get(n,'') for n in range(1,121))
-check('consistent Chinese image-instruction language',language_ok,'all 120 prompts declare Chinese visual directions; Japanese dialogue and technical IDs remain fixed exceptions')
+check('English model-execution layer declared in every source prompt',language_ok,'all 120 Chinese source prompts require faithful English model-facing instructions; Japanese dialogue and technical data remain verbatim')
 visual_standard=(ROOT/'V27_统一视觉与语言规范.md').read_text(encoding='utf-8')
-visual_ok=all(x in visual_standard for x in ['原创','简体中文','试片','塑料皮肤'])
+visual_ok=all(x in visual_standard for x in ['原创','简体中文','英文忠实译稿','试片','塑料皮肤'])
 check('visual and language standard available',visual_ok,'stand-alone art-direction and language bible is present')
-all_text='\n'.join(p.read_text(encoding='utf-8') for p in ROOT.rglob('*.md'))
-clean_ok=('drive.google.com' not in all_text and 'File ID:' not in all_text and 'Folder ID:' not in all_text and not re.search(r'(?<!\w)V(?:0?[1-9]|1\d|2[0-6])(?!\w)',all_text))
-check('single clean V27 environment',clean_ok,'no Drive URLs/IDs or prior version labels in project markdown')
+text_extensions={'.md','.csv','.json','.txt','.py','.yaml','.yml'}
+all_text_files=[p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts and p.suffix.lower() in text_extensions and p.name!='audit_v27_candidate.py']
+all_text='\n'.join(p.read_text(encoding='utf-8') for p in all_text_files)
+drive_id_pattern=re.compile(r'(?<![A-Za-z0-9])1[A-Za-z0-9_-]{25,38}(?![A-Za-z0-9])')
+drive_id_hits=[(str(p.relative_to(ROOT)),len(drive_id_pattern.findall(p.read_text(encoding='utf-8')))) for p in all_text_files if drive_id_pattern.search(p.read_text(encoding='utf-8'))]
+drive_url_hits=sum(len(re.findall(r'https?://(?:drive|docs)\.google\.com',p.read_text(encoding='utf-8'),re.I)) for p in all_text_files)
+file_id_hits=sum(len(re.findall(r'File ID\s*`',p.read_text(encoding='utf-8'))) for p in all_text_files)
+cloud_ref_ok=(drive_url_hits==0 and file_id_hits==0 and not re.search(r'云端\s*4K\s*母带',all_text) and not drive_id_hits)
+check('legacy cloud references across all text files',cloud_ref_ok,f'{len(all_text_files)} text files scanned; raw Google-style IDs={sum(n for _,n in drive_id_hits)}; Drive URLs={drive_url_hits}; File ID annotations={file_id_hits}; hit files={drive_id_hits[:5]}')
 source_count=len(list((D/'source_masters').glob('*.jpg')))
 candidate_count=len(list((D/'selected_images').glob('*.png')))
 check('local image asset set',source_count==40 and candidate_count==10,f'{source_count}/40 source masters; {candidate_count}/10 selected image candidates')
 platform=(ROOT/'V27_制作与发布流程.md').read_text(encoding='utf-8')
 platform_ok=all(x in platform for x in ['哔哩哔哩','抖音','AI内容标识','5秒'])
 check('platform production workflow',platform_ok,'Bilibili, Douyin, AI disclosure, and current five-second generation adaptation documented')
-# A passed package is ready for the user's video production stage, not a finished film or publication.
-result={'audit':'V27 clean production script package audit','script_package_ready_to_start_video':not issues,'final_video_delivered':False,'platform_publication_performed':False,'checks':checks,'issue_count':len(issues)}
+english_dir=D/'model_prompts_en'
+english_files=sorted(english_dir.glob('Manus15s_*.md')) if english_dir.exists() else []
+english_ids=set()
+for p in english_files:
+    m=re.fullmatch(r'Manus15s_(\d{3})\.md',p.name)
+    if m: english_ids.add(int(m.group(1)))
+english_ready=(english_ids==expected and len(english_files)==120)
+check('English model-execution prompt coverage',english_ready,f'{len(english_ids)}/120 numbered English prompt files present in deliverables/model_prompts_en')
+review_manifest=ROOT/'V27_英译执行提示审校台账.csv'
+review_rows=[]
+try:
+    with review_manifest.open(encoding='utf-8-sig',newline='') as f: review_rows=list(csv.DictReader(f))
+except (OSError,csv.Error):
+    review_rows=[]
+review_ids=set(); review_failures=[]
+for row in review_rows:
+    try: unit=int(row.get('unit',''))
+    except ValueError: review_failures.append('invalid unit'); continue
+    review_ids.add(unit)
+    source=ROOT/row.get('source_file','')
+    english=ROOT/row.get('english_file','')
+    source_hash=hashlib.sha256(source.read_bytes()).hexdigest() if source.is_file() else ''
+    english_hash=hashlib.sha256(english.read_bytes()).hexdigest() if english.is_file() else ''
+    if source_hash!=row.get('source_sha256',''): review_failures.append(f'{unit:03d}: stale/missing source hash')
+    if not english_hash or english_hash!=row.get('english_sha256',''): review_failures.append(f'{unit:03d}: missing/stale English prompt hash')
+    if any(row.get(k,'').strip().upper()!='PASS' for k in ['semantic_review','technical_review','dialogue_asset_review']): review_failures.append(f'{unit:03d}: review fields not PASS')
+    if row.get('director_approval','').strip().upper()!='APPROVED' or not row.get('reviewer','').strip() or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',row.get('review_date','').strip()): review_failures.append(f'{unit:03d}: missing director approval/reviewer/date')
+review_ready=(review_ids==expected and len(review_rows)==120 and not review_failures)
+check('English prompt review ledger and approval',review_ready,f'{sum(1 for r in review_rows if r.get("director_approval","").strip().upper()=="APPROVED")}/120 approved; hash-bound ledger failures={review_failures[:5]}')
+# A passed package is ready for the user's video-production stage, not a finished film or publication.
+result={'audit':'V27 clean production script package audit','script_package_ready_to_start_video':not issues,'final_video_delivered':False,'platform_publication_performed':False,'blocking_checks':issues,'checks':checks,'issue_count':len(issues)}
 (ROOT/'V27_audit_results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(result,ensure_ascii=False,indent=2))
 sys.exit(1 if issues else 0)
