@@ -1,0 +1,94 @@
+{
+  "audit": "V27 clean production script package audit",
+  "script_package_ready_to_start_video": true,
+  "final_video_delivered": false,
+  "platform_publication_performed": false,
+  "checks": [
+    {
+      "check": "Manus15s block coverage",
+      "status": "pass",
+      "detail": "120/120 prompt bodies in vol6"
+    },
+    {
+      "check": "Bible prompt coverage",
+      "status": "pass",
+      "detail": "120/120 embedded prompt bodies"
+    },
+    {
+      "check": "stand-alone prompt parity",
+      "status": "pass",
+      "detail": "120/120 match; errors=[]"
+    },
+    {
+      "check": "per-block audio boundary",
+      "status": "pass",
+      "detail": "120/120 notes; errors=[]"
+    },
+    {
+      "check": "Bible-to-master prompt parity",
+      "status": "pass",
+      "detail": "120/120 equal; mismatches=[]"
+    },
+    {
+      "check": "218+1 asset accounting",
+      "status": "pass",
+      "detail": "Bible states 218 historical photographs + AI-generated frame 219"
+    },
+    {
+      "check": "legacy contradiction sweep",
+      "status": "pass",
+      "detail": "no targeted legacy phrases"
+    },
+    {
+      "check": "Shot_123 corrected timeline/dialogue",
+      "status": "pass",
+      "detail": "date scope no longer falsely covers earlier refusal"
+    },
+    {
+      "check": "Shot_124/128 revised frame wording",
+      "status": "pass",
+      "detail": "key Japanese lines distinguish real photos and generated frame"
+    },
+    {
+      "check": "Manus audio generation boundary",
+      "status": "pass",
+      "detail": "master assigns all audio to sound department"
+    },
+    {
+      "check": "180-shot structure",
+      "status": "pass",
+      "detail": "180/180 Shot headings"
+    },
+    {
+      "check": "Manus15s_101 food-only shot",
+      "status": "pass",
+      "detail": "food close-up is not directed at an off-camera character"
+    },
+    {
+      "check": "Manus15s_102 tail-frame contract",
+      "status": "pass",
+      "detail": "Manus F360 is the required output; Shot F240 is not mislabelled as it"
+    },
+    {
+      "check": "Manus15s_119 VO closed-mouth direction",
+      "status": "pass",
+      "detail": "final chorus is off-screen voice-over; visible backs remain closed-mouth"
+    },
+    {
+      "check": "single clean V27 environment",
+      "status": "pass",
+      "detail": "no Drive URLs/IDs or prior version labels in project markdown"
+    },
+    {
+      "check": "local image asset set",
+      "status": "pass",
+      "detail": "40/40 source masters; 10/10 selected image candidates"
+    },
+    {
+      "check": "platform production workflow",
+      "status": "pass",
+      "detail": "Bilibili, Douyin, AI disclosure, and current five-second generation adaptation documented"
+    }
+  ],
+  "issue_count": 0
+}

@@ -1,0 +1,47 @@
+# Manus15s_038
+
+> 本文件 = 《120 镜 Manus15 秒满格轨总表》中 **Manus15s_038** 这一块的完整指令，读完即可执行。
+> 全局规则（IP 保留 / 五项铁律 / 接力链 / 自检清单）见《Manus执行交接书.md》，此处不重复。
+> **执行职责：Manus仅生成本块3840×2160画面（15秒/360帧@24fps）及本块指定尾帧；所有Audio Cue均为声音组与口型时序参考，不生成/交付/嵌入音频。**
+
+## 本块速查
+
+| 项 | 值 |
+|:---|:---|
+| 块号 | **Manus15s_038**（第 38 / 120 块） |
+| 时间码 | `09:15–09:30` |
+| 帧区间 | `13321`–`13680` |
+| 涵盖镜头 | Shot_056 (15–20s) + Shot_057 (20–30s) |
+| 衔接模式 | **B · 末帧接力** |
+| 0.0s 首帧 | 承接上一块尾帧 |
+| 上一块尾帧 | `Manus15s_037_LastFrame_360.png` |
+| 主母带 | `12_图3.8_Scene08_0411号绿皮火车前递纪念照与牵手定情_3840x2160_4K.jpg`<br>File ID `1wVUR4iMgx5TtMS-aZCs8T6ibWmH4ON_l` |
+| 锁脸图 | `02_图2.1…`<br>File ID `16_EbUVTBnl1JrXxnJQjCG9yg2vVrgB_c`<br>`03a_图2.2L…`<br>File ID `1rw2CxZ5n1dtQJzUY1eQ-aRRa6BvbUJ35` |
+| 尾帧导出 | `Shot_057_EndHold_Frame240.png` |
+
+---
+
+## 一、块头与字段（摘自总表）
+
+#### 原始块头：Manus15s_038 | 时间码 09:15–09:30 (15.0s) | 帧区间 13321–13680 | 涵盖 Shot_056 (15–20s) + Shot_057 (20–30s)
+- **所属场次**：Scene 08：十日温柔证明终章（Day 10 = 0411）——退役绿皮火车前的正式定情 (Cut 08C (1/2) -> Cut 08C (2/2))
+- **3:2 跨镜映射关系**：`Shot_056 (后半 5.0s · F001–F120) + Shot_057 (全 10.0s · F121–F360)`
+- **光学焦段 / 色温**：85mm f/1.4 | 4500K
+- **Manus 衔接模式**：**模式B-跨镜末帧接力续生 (0.0s首帧承接 Manus15s_037 第360帧末帧［即 Shot_056 第120帧中点］ -> F121(5.0s)无缝切入 Shot_057 并延展至第360帧稳像落幅)**
+- **V27本地参考母带文件**：12_图3.8_Scene08_0411号绿皮火车前递纪念照与牵手定情_3840x2160_4K.jpg
+- **0.0s 首帧 / 参考槽**：Manus15s_037_LastFrame_360.png (FROM_MANUS15S_037_FRAME_360)
+- **15.0s（第360帧）尾帧槽**：Shot_057_EndHold_Frame240.png (HOLD_SHOT_057_FRAME_240)
+- **辅助锁脸槽（Weight=0.35 仅锁五官骨相，严禁跨场串服）**：02_图2.1_女主角雨绪偏DBX_真人锁脸唯一颜值基准与第219帧_3840x2160_4K.jpg + 03a_图2.2L_男主冬冰絮_春秋季浅灰开衫单人锁脸基准_1916x2160_4K.jpg
+- **同步声轨与口型卡点**：【0.0–5.0s (Shot_056后半)】【女主·雨绪偏】「これからもよろしくね、氷絮。」（往后请多指教啦，冰絮。） ＋ 【5.0–15.0s (Shot_057)】【SFX】111.9 Hz风铃余音与春风声淡出。
+- **群像配角画外音（OS）跨镜对位**：无配角画外音（保持男女主原声/VO/环境Foley纯净度）
+```text
+· 【铁律1 · 光学镜头·画幅·色温死锁】：85mm f/1.4 · 色温 4500K · 16:9（3840×2160）全出血无黑边宽银幕 · 18%新海诚式高光柔和辉光（Bloom）与丁达尔体积光。
+· 【铁律2 · 角色骨相·颜值·恒定特征死锁】：【双人骨相与恒定特征死锁】女主雨绪偏（DBX）：鹅蛋小V脸、清透冷白瓷肌（Lab L*≥88）、多层星芒琥珀大眼（严禁闭眼）、左眼外下方唯一一颗精致小美人痣、空气感齐刘海+一刀切公主切及腰黑长直发（严禁添加任何头饰发带）；男主冬冰絮（YXP）：同级清透少年冷白皮（Lab L*≥88）、蓬松深棕黑碎盖短发、斯文细黑框眼镜、左右双耳外侧对称佩戴银色双环耳骨夹+小耳圈。
+· 【铁律3 · 本镜专属机位景别·服化道·解剖学左右手与防串服死锁】：【服化道与左右手死锁】0411号深森林绿复古火车前（黄铜铭牌『0411』与车檐铜风铃清晰）：左侧男主冬冰絮穿浅灰V领针织开衫配白衬衫，正面向右，解剖学右手（近侧下垂手）稳持樱花走廊45度逆光洗印照片，解剖学左手（远侧伸出手）向女主敞开掌心并牵住女主右手；右侧女主雨绪偏穿白衬衫配红蓝白斜条纹领结JK制服（无发箍头饰），伸出解剖学右手放入男主左掌心。 【本镜（Manus15s_038 · 09:15–09:30 · 360帧满格 · Shot_056 (15–20s) + Shot_057 (20–30s)）专属五子镜画面边界锁】：前半程与后半程跨镜无缝衔接，严格遵循下方【铁律5】的 Sub-Cut α–ε 五子镜帧级动作轨迹。
+· 【铁律4 · 声画同步·配乐SFX·台词口型与声优基频死锁】：【前半程 0.0–5.0s (Shot_056后半 · F001–F120)】【女主现场台词口型死锁】本镜为女主雨绪偏现场同期声开口台词：仅女主雨绪偏在 2.0s–8.0s 区间朱唇随日语台词音节自然微张开合对口型；同框倾听的男主冬冰絮必须保持双唇自然轻抿或微笑闭合注视，严禁倾听者乱张嘴！ ＋ 【后半程 5.0–15.0s (Shot_057 · F121–F360)】【画外音VO / 内心独白 / 纯配乐SFX·闭口微表情死锁】本镜声轨为画外音（VO）、内心独白或纯配乐/环境音效（SFX），画面中所有在场人物双唇必须保持自然轻抿或温柔浅笑闭合状态，严禁张嘴说话或嘴唇乱动对口型！通过眼神光流转、睫毛轻颤与呼吸起伏传递细腻情绪。 【本镜配乐（OST）与侧链锁】：乐章III · 0411定情 — RADWIMPS《デート (Date)》（68 BPM · 降B大调 · 温暖弦乐主旋律高潮叠合0411车厢111.9 Hz风铃）；【声音组完整Cue（非画面生成任务）】：【0.0–5.0s (Shot_056后半)】【女主·雨绪偏】「これからもよろしくね、氷絮。」（往后请多指教啦，冰絮。） ＋ 【5.0–15.0s (Shot_057)】【SFX】111.9 Hz风铃余音与春风声淡出。；【声优基频与发音死锁】：男主冬冰絮（YXP）声优基频锁定 130Hz 温润少年音（神木隆之介声线），女主雨绪偏（DBX）声优基频锁定 245Hz 清澈少女音（上白石萌音声线），林夏栀锁定 260Hz 明快御姐音（纯OS），陈默野锁定 145Hz 沉稳男中音（纯OS），周凛山教授锁定 95Hz 浑厚低音炮（纯OS），片名「暮冬」严格读作 ぼとう（Botō，严禁误读为くれふゆ）。
+· 【铁律5 · Manus 15.0秒（360帧 @24.000fps）五子镜关键帧运镜与动态轨迹死锁】：【Sub-Cut α · 0.0–2.5秒（第001–060帧 · Keyframes F001→F030→F060 · 承接 Shot_056 中段）】以 `Manus15s_037_LastFrame_360.png` 接力起幅（85mm f/1.4，色温 4500K）：冬冰絮的左手温柔握紧雨绪偏的右手，两人在漫天春樱中深情相视而笑。【Sub-Cut β · 2.5–5.0秒（第061–120帧 · Keyframes F061→F090→F120 · 完成 Shot_056 后半程）】春风拂过车檐111.9 Hz铜风铃，花瓣围绕两人旋转，说话者口型开合严格匹配日语台词音节节奏，眼神高光与面部微表情细腻传神。【Sub-Cut γ · 5.0–8.5秒（第121–204帧 · Keyframes F121→F162→F204 · 跨镜切入 Shot_057 起幅与主动作）】第121帧无缝切入 `Shot_057`（85mm f/1.4，4500K）：镜头从两人紧握的双手与0411黄铜铭牌缓缓向上摇升；掠过缀满粉白春樱的树冠。【Sub-Cut δ · 8.5–12.5秒（第205–300帧 · Keyframes F205→F252→F300 · 源自 Shot_057 情绪波峰）】4500K夕阳金辉穿透繁茂的春樱枝叶洒下漫天金色光斑，0411号车檐铜风铃随风轻晃，人物双唇保持自然轻抿闭合（严禁乱动嘴型），多层星芒瞳孔高光与发丝光影呈现京阿尼级细腻呼吸感。【Sub-Cut ε · 12.5–15.0秒（第301–360帧 · Keyframes F301→F336→F360）Manus 15秒满格落幅与第360帧锁】F301起按24fps院线阻尼曲线平稳减速，于第15.00秒（第360帧）完成零动态模糊稳像定格，输出/锁定 `Shot_057_EndHold_Frame240.png`（`HOLD_SHOT_057_FRAME_240`）。
+· 【铁律6 · Manus 15秒满格视频生成平台首尾帧槽位与多图权重死锁】：【Manus衔接模式】模式B-跨镜末帧接力续生 (0.0s首帧承接 Manus15s_037 第360帧末帧［即 Shot_056 第120帧中点］ -> F121(5.0s)无缝切入 Shot_057 并延展至第360帧稳像落幅)；【0.0s(第001帧)首帧/参考槽位】`Manus15s_037_LastFrame_360.png (FROM_MANUS15S_037_FRAME_360)`；【15.0s(第360帧)尾帧槽位】`Shot_057_EndHold_Frame240.png (HOLD_SHOT_057_FRAME_240)`；【辅助锁脸槽位（Weight=0.35 仅锁五官骨相，严禁跨场串服）】02_图2.1_女主角雨绪偏DBX_真人锁脸唯一颜值基准与第219帧_3840x2160_4K.jpg + 03a_图2.2L_男主冬冰絮_春秋季浅灰开衫单人锁脸基准_1916x2160_4K.jpg。
+· 【铁律7 · 单镜靶向负面提示词分段死锁（Negative）】：【前半程 0.0–5.0s (Shot_056后半 · F001–F120)】变形的手指、多余的手臂（严禁三只手）、手指粘连或缺失、左右手镜像颠倒、闭眼或半眯眼、斗鸡眼、偏黄偏暗肤色（严禁面部脏暗阴影）、多余黑边或画中画内框、画面闪烁伪影、文字乱码、廉价3D塑料感、左眼外下方美人痣缺失或移位、男主双耳银色耳骨夹缺失、严禁在女主头上添加任何发箍或蝴蝶结发带头饰、严禁出现垂直分屏黑线或左右双屏割裂画面、画面内严禁出现任何扭曲乱码文字、除参考图既有道具与商标外的其他商标Logo或多余水印 (deformed fingers, extra arms, three hands, fused or missing fingers, reversed left/right hands, closed or half-shut eyes, crossed eyes, dark or yellowish skin shadow, black letterbox/pillarbox borders, picture-in-picture frames, flickering artifacts, garbled text, cheap 3D CGI plastic look, missing or misplaced left under-eye beauty mole, missing symmetrical silver ear cuffs on boy, any hairband, headband, or hair ribbon on heroine, vertical split-screen black line or split-panel frame) ＋ 【后半程 5.0–15.0s (Shot_057 · F121–F360)】变形的手指、多余的手臂（严禁三只手）、手指粘连或缺失、左右手镜像颠倒、闭眼或半眯眼、斗鸡眼、偏黄偏暗肤色（严禁面部脏暗阴影）、多余黑边或画中画内框、画面闪烁伪影、文字乱码、廉价3D塑料感、左眼外下方美人痣缺失或移位、男主双耳银色耳骨夹缺失、严禁在女主头上添加任何发箍或蝴蝶结发带头饰、严禁出现垂直分屏黑线或左右双屏割裂画面、严禁人物张嘴说话或嘴唇乱动对口型、画面内严禁出现任何扭曲乱码文字、除参考图既有道具与商标外的其他商标Logo或多余水印 (deformed fingers, extra arms, three hands, fused or missing fingers, reversed left/right hands, closed or half-shut eyes, crossed eyes, dark or yellowish skin shadow, black letterbox/pillarbox borders, picture-in-picture frames, flickering artifacts, garbled text, cheap 3D CGI plastic look, missing or misplaced left under-eye beauty mole, missing symmetrical silver ear cuffs on boy, any hairband, headband, or hair ribbon on heroine, vertical split-screen black line or split-panel frame, open mouth speaking, random lip movement or lip-syncing)
+```
+
+### 【第三幕：转（盛夏） · Manus 15秒满格轨】

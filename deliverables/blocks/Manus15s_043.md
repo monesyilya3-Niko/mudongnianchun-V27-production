@@ -1,0 +1,45 @@
+# Manus15s_043
+
+> 本文件 = 《120 镜 Manus15 秒满格轨总表》中 **Manus15s_043** 这一块的完整指令，读完即可执行。
+> 全局规则（IP 保留 / 五项铁律 / 接力链 / 自检清单）见《Manus执行交接书.md》，此处不重复。
+> **执行职责：Manus仅生成本块3840×2160画面（15秒/360帧@24fps）及本块指定尾帧；所有Audio Cue均为声音组与口型时序参考，不生成/交付/嵌入音频。**
+
+## 本块速查
+
+| 项 | 值 |
+|:---|:---|
+| 块号 | **Manus15s_043**（第 43 / 120 块） |
+| 时间码 | `10:30–10:45` |
+| 帧区间 | `15121`–`15480` |
+| 涵盖镜头 | Shot_064 (0–10s) + Shot_065 (10–15s) |
+| 衔接模式 | **B · 末帧接力** |
+| 0.0s 首帧 | 承接上一块尾帧 |
+| 上一块尾帧 | `Shot_063_LastFrame.png` |
+| 主母带 | `14_图3.10_Scene10_盛夏海滨电车审片与第一次帮放黑包_3840x2160_4K.jpg`<br>File ID `1iakBQzUswxogL94jMNtq8khIvyrUgPJ9` |
+| 锁脸图 | `02_图2.1…`<br>File ID `16_EbUVTBnl1JrXxnJQjCG9yg2vVrgB_c`<br>`03a_图2.2L…`<br>File ID `1rw2CxZ5n1dtQJzUY1eQ-aRRa6BvbUJ35` |
+| 尾帧导出 | `Manus15s_043_LastFrame_360.png` |
+
+---
+
+## 一、块头与字段（摘自总表）
+
+#### 原始块头：Manus15s_043 | 时间码 10:30–10:45 (15.0s) | 帧区间 15121–15480 | 涵盖 Shot_064 (0–10s) + Shot_065 (10–15s)
+- **所属场次**：Scene 10：盛夏海滨木质电车里的肩并肩审片（第一次“拎包男友力”连戏） (Cut 10B (1/3) -> Cut 10B (2/3))
+- **3:2 跨镜映射关系**：`Shot_064 (全 10.0s · F001–F240) + Shot_065 (前半 5.0s · F241–F360)`
+- **光学焦段 / 色温**：50mm f/1.4 | 5600K
+- **Manus 衔接模式**：**模式B：末帧接力续生 (取 Shot_063 第240帧作0.0s首帧 -> F241(10.0s)跨镜切入 Shot_065 前半程 / Manus Extend 15s)**
+- **V27本地参考母带文件**：14_图3.10_Scene10_盛夏海滨电车审片与第一次帮放黑包_3840x2160_4K.jpg
+- **0.0s 首帧 / 参考槽**：Shot_063_LastFrame.png (USE_SHOT_063_FRAME_240)
+- **15.0s（第360帧）尾帧槽**：Manus15s_043_LastFrame_360.png (EXPORT_MANUS15S_043_FRAME_360)
+- **辅助锁脸槽（Weight=0.35 仅锁五官骨相，严禁跨场串服）**：02_图2.1_女主角雨绪偏DBX_真人锁脸唯一颜值基准与第219帧_3840x2160_4K.jpg + 03a_图2.2L_男主冬冰絮_春秋季浅灰开衫单人锁脸基准_1916x2160_4K.jpg
+- **同步声轨与口型卡点**：【0.0–10.0s (Shot_064)】【SFX】电车轻微摇晃声与海浪声。 ＋ 【10.0–15.0s (Shot_065前半)】【女主·雨绪偏】「……あっ、私の黒いカバン、ずっと膝の上に置いて持ってくれてたの？重くない？」（……啊，我的黑色手提包，你一直放在膝盖上帮我拿着吗？重不重呀？）
+- **群像配角画外音（OS）跨镜对位**：无配角画外音（保持男女主原声/VO/环境Foley纯净度）
+```text
+· 【铁律1 · 光学镜头·画幅·色温死锁】：50mm f/1.4 · 色温 5600K · 16:9（3840×2160）全出血无黑边宽银幕 · 18%新海诚式高光柔和辉光（Bloom）与丁达尔体积光。
+· 【铁律2 · 角色骨相·颜值·恒定特征死锁】：【双人骨相与恒定特征死锁】女主雨绪偏（DBX）：鹅蛋小V脸、清透冷白瓷肌（Lab L*≥88）、多层星芒琥珀大眼（严禁闭眼）、左眼外下方唯一一颗精致小美人痣、空气感齐刘海+一刀切公主切及腰黑长直发（严禁添加任何头饰发带）；男主冬冰絮（YXP）：同级清透少年冷白皮（Lab L*≥88）、蓬松深棕黑碎盖短发、斯文细黑框眼镜、左右双耳外侧对称佩戴银色双环耳骨夹+小耳圈。
+· 【铁律3 · 本镜专属机位景别·服化道·解剖学左右手与防串服死锁】：【服化道与左右手死锁·防串服重点】盛夏海滨木质电车内（图3.10）：左侧男主冬冰絮身穿盛夏清爽短袖白衬衫（严禁将辅助锁脸图中的浅灰毛衣开衫或黑夹克带入本场！），双腿膝盖上横放着女主的带银色金属扣黑色单肩手提包，双手自然搭在黑包包面上帮她扶稳（第一次拎包连戏）；右侧女主雨绪偏身穿纯白蕾丝层叠吊带仙女长裙、头戴白色蕾丝长飘带草帽（无任何发箍，严禁穿JK制服或冬装），双手举着带白猫吊坠的粉色数码相机与男主并肩审片。 【本镜（Manus15s_043 · 10:30–10:45 · 360帧满格 · Shot_064 (0–10s) + Shot_065 (10–15s)）专属五子镜画面边界锁】：前半程与后半程跨镜无缝衔接，严格遵循下方【铁律5】的 Sub-Cut α–ε 五子镜帧级动作轨迹。
+· 【铁律4 · 声画同步·配乐SFX·台词口型与声优基频死锁】：【前半程 0.0–10.0s (Shot_064 · F001–F240)】【画外音VO / 内心独白 / 纯配乐SFX·闭口微表情死锁】本镜声轨为画外音（VO）、内心独白或纯配乐/环境音效（SFX），画面中所有在场人物双唇必须保持自然轻抿或温柔浅笑闭合状态，严禁张嘴说话或嘴唇乱动对口型！通过眼神光流转、睫毛轻颤与呼吸起伏传递细腻情绪。 ＋ 【后半程 10.0–15.0s (Shot_065前半 · F241–F360)】【女主现场台词口型死锁】本镜为女主雨绪偏现场同期声开口台词：仅女主雨绪偏在 2.0s–8.0s 区间朱唇随日语台词音节自然微张开合对口型；同框倾听的男主冬冰絮必须保持双唇自然轻抿或微笑闭合注视，严禁倾听者乱张嘴！ 【本镜配乐（OST）与侧链锁】：乐章IV · 海滨电车 — RADWIMPS《前前前世 (Zenzenzense - movie ver.)》（190 BPM · B大调 · 青春律动主歌推进）；【声音组完整Cue（非画面生成任务）】：【0.0–10.0s (Shot_064)】【SFX】电车轻微摇晃声与海浪声。 ＋ 【10.0–15.0s (Shot_065前半)】【女主·雨绪偏】「……あっ、私の黒いカバン、ずっと膝の上に置いて持ってくれてたの？重くない？」（……啊，我的黑色手提包，你一直放在膝盖上帮我拿着吗？重不重呀？）；【声优基频与发音死锁】：男主冬冰絮（YXP）声优基频锁定 130Hz 温润少年音（神木隆之介声线），女主雨绪偏（DBX）声优基频锁定 245Hz 清澈少女音（上白石萌音声线），林夏栀锁定 260Hz 明快御姐音（纯OS），陈默野锁定 145Hz 沉稳男中音（纯OS），周凛山教授锁定 95Hz 浑厚低音炮（纯OS），片名「暮冬」严格读作 ぼとう（Botō，严禁误读为くれふゆ）。
+· 【铁律5 · Manus 15.0秒（360帧 @24.000fps）五子镜关键帧运镜与动态轨迹死锁】：【Sub-Cut α · 0.0–2.5秒（第001–060帧 · Keyframes F001→F030→F060 · 源自 Shot_064 起幅）】以 `Shot_063_LastFrame.png` 定锚起幅（50mm f/1.4，色温 5600K）：承接前镜电车车厢中景末帧，镜头平滑下移推近至50mm冬冰絮双腿膝盖上方特写。【Sub-Cut β · 2.5–6.0秒（第061–144帧 · Keyframes F061→F102→F144 · 源自 Shot_064 主动作）】为了让雨绪偏轻松拍照，他体贴地把她那只带银色金属搭扣的黑色单肩手提包横放在自己双腿上。【Sub-Cut γ · 6.0–10.0秒（第145–240帧 · Keyframes F145→F192→F240 · 源自 Shot_064 递进段）】冬冰絮修长的双手自然温柔地搭在黑色手提包包面上帮她扶稳（全片第一次“帮拿黑包”细节！）。【Sub-Cut δ · 10.0–13.0秒（第241–312帧 · Keyframes F241→F276→F312 · 跨镜切入 Shot_065 前半程）】第241帧无缝切入 `Shot_065`（50mm f/1.4，5600K）：雨绪偏转头刚想找自己的包；忽然发现黑色手提包正稳稳放在冬冰絮膝盖上。【Sub-Cut ε · 13.0–15.0秒（第313–360帧 · Keyframes F313→F336→F360）Manus 15秒满格阻尼稳像与第360帧锁】F313起按24fps院线阻尼曲线平稳减速，于第15.00秒（第360帧）零动态模糊定格并导出 `Manus15s_043_LastFrame_360.png`（`EXPORT_MANUS15S_043_FRAME_360`）供 `Manus15s_044` 第001帧无缝接力。
+· 【铁律6 · Manus 15秒满格视频生成平台首尾帧槽位与多图权重死锁】：【Manus衔接模式】模式B：末帧接力续生 (取 Shot_063 第240帧作0.0s首帧 -> F241(10.0s)跨镜切入 Shot_065 前半程 / Manus Extend 15s)；【0.0s(第001帧)首帧/参考槽位】`Shot_063_LastFrame.png (USE_SHOT_063_FRAME_240)`；【15.0s(第360帧)尾帧槽位】`Manus15s_043_LastFrame_360.png (EXPORT_MANUS15S_043_FRAME_360)`；【辅助锁脸槽位（Weight=0.35 仅锁五官骨相，严禁跨场串服）】02_图2.1_女主角雨绪偏DBX_真人锁脸唯一颜值基准与第219帧_3840x2160_4K.jpg + 03a_图2.2L_男主冬冰絮_春秋季浅灰开衫单人锁脸基准_1916x2160_4K.jpg。
+· 【铁律7 · 单镜靶向负面提示词分段死锁（Negative）】：【前半程 0.0–10.0s (Shot_064 · F001–F240)】变形的手指、多余的手臂（严禁三只手）、手指粘连或缺失、左右手镜像颠倒、闭眼或半眯眼、斗鸡眼、偏黄偏暗肤色（严禁面部脏暗阴影）、多余黑边或画中画内框、画面闪烁伪影、文字乱码、廉价3D塑料感、左眼外下方美人痣缺失或移位、男主双耳银色耳骨夹缺失、严禁在女主头上添加任何发箍或蝴蝶结发带头饰、严禁出现垂直分屏黑线或左右双屏割裂画面、严禁人物张嘴说话或嘴唇乱动对口型、画面内严禁出现任何扭曲乱码文字、除参考图既有道具与商标外的其他商标Logo或多余水印 (deformed fingers, extra arms, three hands, fused or missing fingers, reversed left/right hands, closed or half-shut eyes, crossed eyes, dark or yellowish skin shadow, black letterbox/pillarbox borders, picture-in-picture frames, flickering artifacts, garbled text, cheap 3D CGI plastic look, missing or misplaced left under-eye beauty mole, missing symmetrical silver ear cuffs on boy, any hairband, headband, or hair ribbon on heroine, vertical split-screen black line or split-panel frame, open mouth speaking, random lip movement or lip-syncing) ＋ 【后半程 10.0–15.0s (Shot_065前半 · F241–F360)】变形的手指、多余的手臂（严禁三只手）、手指粘连或缺失、左右手镜像颠倒、闭眼或半眯眼、斗鸡眼、偏黄偏暗肤色（严禁面部脏暗阴影）、多余黑边或画中画内框、画面闪烁伪影、文字乱码、廉价3D塑料感、左眼外下方美人痣缺失或移位、男主双耳银色耳骨夹缺失、严禁在女主头上添加任何发箍或蝴蝶结发带头饰、严禁出现垂直分屏黑线或左右双屏割裂画面、画面内严禁出现任何扭曲乱码文字、除参考图既有道具与商标外的其他商标Logo或多余水印 (deformed fingers, extra arms, three hands, fused or missing fingers, reversed left/right hands, closed or half-shut eyes, crossed eyes, dark or yellowish skin shadow, black letterbox/pillarbox borders, picture-in-picture frames, flickering artifacts, garbled text, cheap 3D CGI plastic look, missing or misplaced left under-eye beauty mole, missing symmetrical silver ear cuffs on boy, any hairband, headband, or hair ribbon on heroine, vertical split-screen black line or split-panel frame)
+```
