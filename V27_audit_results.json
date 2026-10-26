@@ -101,7 +101,7 @@
     {
       "check": "legacy cloud references across all text files",
       "status": "pass",
-      "detail": "136 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
+      "detail": "170 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
     },
     {
       "check": "local image asset set",
@@ -116,12 +116,12 @@
     {
       "check": "English model-execution prompt coverage",
       "status": "issue",
-      "detail": "0/120 numbered English prompt files present in deliverables/model_prompts_en"
+      "detail": "31/120 numbered English prompt files present in deliverables/model_prompts_en"
     },
     {
       "check": "English prompt review ledger and approval",
       "status": "issue",
-      "detail": "0/120 approved; hash-bound ledger failures=['001: missing/stale English prompt hash', '001: review fields not PASS', '001: missing director approval/reviewer/date', '002: missing/stale English prompt hash', '002: review fields not PASS']"
+      "detail": "0/120 approved; hash-bound ledger failures=['001: review fields not PASS', '001: missing director approval/reviewer/date', '002: review fields not PASS', '002: missing director approval/reviewer/date', '003: review fields not PASS']"
     }
   ],
   "issue_count": 2
