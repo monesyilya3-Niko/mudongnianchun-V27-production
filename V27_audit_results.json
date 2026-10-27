@@ -98,7 +98,7 @@
     {
       "check": "legacy cloud references across all text files",
       "status": "pass",
-      "detail": "314 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
+      "detail": "262 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
     },
     {
       "check": "local image asset set",
