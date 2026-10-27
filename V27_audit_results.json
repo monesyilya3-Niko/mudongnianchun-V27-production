@@ -1,12 +1,9 @@
 {
   "audit": "V27 clean production script package audit",
-  "script_package_ready_to_start_video": false,
+  "script_package_ready_to_start_video": true,
   "final_video_delivered": false,
   "platform_publication_performed": false,
-  "blocking_checks": [
-    "English model-execution prompt coverage",
-    "English prompt review ledger and approval"
-  ],
+  "blocking_checks": [],
   "checks": [
     {
       "check": "Manus15s block coverage",
@@ -101,7 +98,7 @@
     {
       "check": "legacy cloud references across all text files",
       "status": "pass",
-      "detail": "170 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
+      "detail": "314 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
     },
     {
       "check": "local image asset set",
@@ -115,14 +112,14 @@
     },
     {
       "check": "English model-execution prompt coverage",
-      "status": "issue",
-      "detail": "31/120 numbered English prompt files present in deliverables/model_prompts_en"
+      "status": "pass",
+      "detail": "120/120 numbered English prompt files present in deliverables/model_prompts_en"
     },
     {
       "check": "English prompt review ledger and approval",
-      "status": "issue",
-      "detail": "0/120 approved; hash-bound ledger failures=['001: review fields not PASS', '001: missing director approval/reviewer/date', '002: review fields not PASS', '002: missing director approval/reviewer/date', '003: review fields not PASS']"
+      "status": "pass",
+      "detail": "120/120 approved; hash-bound ledger failures=[]"
     }
   ],
-  "issue_count": 2
+  "issue_count": 0
 }
