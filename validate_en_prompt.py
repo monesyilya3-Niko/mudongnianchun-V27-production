@@ -3,7 +3,7 @@
 from pathlib import Path
 import json, re, sys
 
-ROOT = Path("C:/Users/monesy/Desktop/mudongnianchun-V27-production")
+ROOT = Path(__file__).resolve().parent
 D = ROOT / "deliverables"
 
 def quoted_japanese(text):
