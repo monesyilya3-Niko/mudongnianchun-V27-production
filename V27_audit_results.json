@@ -6,7 +6,7 @@
   "blocking_checks": [],
   "checks": [
     {
-      "check": "Manus15s block coverage",
+      "check": "Unit15s block coverage",
       "status": "pass",
       "detail": "120/120 prompt bodies in vol6"
     },
@@ -51,7 +51,7 @@
       "detail": "key Japanese lines distinguish real photos and generated frame"
     },
     {
-      "check": "Manus audio generation boundary",
+      "check": "Unit audio generation boundary",
       "status": "pass",
       "detail": "master assigns all audio to sound department"
     },
@@ -61,17 +61,17 @@
       "detail": "180/180 Shot headings"
     },
     {
-      "check": "Manus15s_101 food-only shot",
+      "check": "Unit15s_101 food-only shot",
       "status": "pass",
       "detail": "food close-up is not directed at an off-camera character"
     },
     {
-      "check": "Manus15s_102 tail-frame contract",
+      "check": "Unit15s_102 tail-frame contract",
       "status": "pass",
-      "detail": "Manus F360 is the required output; Shot F240 is not mislabelled as it"
+      "detail": "Unit F360 is the required output; Shot F240 is not mislabelled as it"
     },
     {
-      "check": "Manus15s_119 VO closed-mouth direction",
+      "check": "Unit15s_119 VO closed-mouth direction",
       "status": "pass",
       "detail": "final chorus is off-screen voice-over; visible backs remain closed-mouth"
     },
@@ -98,7 +98,7 @@
     {
       "check": "legacy cloud references across all text files",
       "status": "pass",
-      "detail": "262 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
+      "detail": "267 text files scanned; raw Google-style IDs=0; Drive URLs=0; File ID annotations=0; hit files=[]"
     },
     {
       "check": "local image asset set",
