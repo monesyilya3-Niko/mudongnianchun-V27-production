@@ -17,7 +17,7 @@ def backticks(text):
 
 def invariants(src, out, n):
     errs = []
-    if not out.lstrip().startswith(f'# Manus15s_{n:03d}'):
+    if not out.lstrip().startswith(f'# Unit15s_{n:03d}'):
         errs.append('bad title')
     if out.count('```text') != src.count('```text'):
         errs.append('code-fence count')
@@ -27,7 +27,7 @@ def invariants(src, out, n):
     for tok in quoted_japanese(src):
         if tok not in out:
             errs.append(f'missing quoted text {tok[:30]}')
-    for tok in re.findall(r'\b(?:Shot|Manus15s)_\d{3}\b', src):
+    for tok in re.findall(r'\b(?:Shot|Unit15s)_\d{3}\b', src):
         if out.count(tok) < src.count(tok):
             errs.append(f'identifier count {tok} (src={src.count(tok)}, out={out.count(tok)})')
     for tok in re.findall(r'\b\d+(?:\.\d+)?(?:fps|mm|K|dB|Hz|BPM|px|s)\b', src):
@@ -40,12 +40,12 @@ def invariants(src, out, n):
     return errs
 
 def check_unit(n):
-    sp = D / "blocks" / f"Manus15s_{n:03d}.md"
-    ep = D / "model_prompts_en" / f"Manus15s_{n:03d}.md"
+    sp = D / "blocks" / f"Unit15s_{n:03d}.md"
+    ep = D / "model_prompts_en" / f"Unit15s_{n:03d}.md"
     if not sp.exists():
-        return False, [f"source Manus15s_{n:03d}.md does not exist"]
+        return False, [f"source Unit15s_{n:03d}.md does not exist"]
     if not ep.exists():
-        return False, [f"english Manus15s_{n:03d}.md does not exist"]
+        return False, [f"english Unit15s_{n:03d}.md does not exist"]
     src = sp.read_text(encoding="utf-8")
     out = ep.read_text(encoding="utf-8")
     errs = invariants(src, out, n)
@@ -64,24 +64,24 @@ if __name__ == "__main__":
             for u in units:
                 ok, errs = check_unit(u)
                 if ok:
-                    print(f"Manus15s_{u:03d}: PASS")
+                    print(f"Unit15s_{u:03d}: PASS")
                 else:
                     all_ok = False
-                    print(f"Manus15s_{u:03d}: FAIL -> {errs}")
+                    print(f"Unit15s_{u:03d}: FAIL -> {errs}")
         sys.exit(0 if all_ok else 1)
     else:
         # Check all present in model_prompts_en
-        files = sorted((D / "model_prompts_en").glob("Manus15s_*.md"))
+        files = sorted((D / "model_prompts_en").glob("Unit15s_*.md"))
         print(f"Checking {len(files)} English prompt files...")
         failures = 0
         for f in files:
-            m = re.fullmatch(r"Manus15s_(\d{3})\.md", f.name)
+            m = re.fullmatch(r"Unit15s_(\d{3})\.md", f.name)
             if not m:
                 continue
             u = int(m.group(1))
             ok, errs = check_unit(u)
             if not ok:
                 failures += 1
-                print(f"Manus15s_{u:03d}: FAIL -> {errs[:3]}")
+                print(f"Unit15s_{u:03d}: FAIL -> {errs[:3]}")
         print(f"Result: {len(files) - failures}/{len(files)} passed.")
         sys.exit(0 if failures == 0 else 1)
