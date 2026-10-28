@@ -17,8 +17,8 @@
 - `deliverables/vol5_voice.md`：台词、语音与表演稿。
 - `deliverables/voice_cue.md`：逐镜声音、口型、对白、VO/OS及混音Cue。
 - `deliverables/vol6_manus15.md`：180镜及120个15秒制作单元的中文总控提示。
-- `deliverables/blocks/Manus15s_001.md`–`Manus15s_120.md`：120份独立执行块；每块提示正文与总表保持同步。
-- `deliverables/model_prompts_en/Manus15s_001.md`–`Manus15s_120.md`：120份英文模型执行提示词；已全部通过确定性不变式校验，专供视频模型调用。
+- `deliverables/blocks/Unit15s_001.md`–`Unit15s_120.md`：120份独立执行块；每块提示正文与总表保持同步。
+- `deliverables/model_prompts_en/Unit15s_001.md`–`Unit15s_120.md`：120份英文模型执行提示词；已全部通过确定性不变式校验，专供视频模型调用。
 - `deliverables/source_masters/`：40张本地源参考母带；`deliverables/selected_images/`：10张选定图像修订候选，不覆盖母带。
 - `V27_英译执行提示审校台账.csv`：120条英文执行提示的源稿/英译SHA-256哈希绑定及逐项审校、总导演签批记录；120项全部 APPROVED / PASS。
 - `V27_5秒视频生成台账.csv`：将120个15秒单元拆为360条5秒任务；供单次限制5秒的工具分段执行。
@@ -26,7 +26,7 @@
 
 ## 当前放行状态
 
-正式包中 120 份 `deliverables/model_prompts_en/Manus15s_001.md` 至 `Manus15s_120.md` 全部齐备且通过确定性不变式校验；英译审校台账的 120 项已全量完成双向哈希绑定与总导演签批。此前记录的 Manus15s_007/011/018/019 试译瑕疵与 Shot_014/026/027 跨块口型时码已全部完成三级联动（blocks、vol6、bible）原子级闭环同步。
+正式包中 120 份 `deliverables/model_prompts_en/Unit15s_001.md` 至 `Unit15s_120.md` 全部齐备且通过确定性不变式校验；英译审校台账的 120 项已全量完成双向哈希绑定与总导演签批。此前记录的 Unit15s_007/011/018/019 试译瑕疵与 Shot_014/026/027 跨块口型时码已全部完成三级联动（blocks、vol6、bible）原子级闭环同步。
 
 当前自动审计结果为：
 - `script_package_ready_to_start_video: true`
@@ -40,4 +40,4 @@
 python audit_v27_candidate.py
 ```
 
-脚本包已全面放行，当前可正式开启画面生成。依流程先做前序镜头试片（如 Shot_001–003 或 Manus15s_001–003），通过连续性与风格核验后再批量制作。最终目标平台为哔哩哔哩和抖音。发布AI生成合成内容时须依平台当时规则申报并使用相应标识功能。按用户指示，本轮未处理第三方IP权利清理。
+脚本包已全面放行，当前可正式开启画面生成。依流程先做前序镜头试片（如 Shot_001–003 或 Unit15s_001–003），通过连续性与风格核验后再批量制作。最终目标平台为哔哩哔哩和抖音。发布AI生成合成内容时须依平台当时规则申报并使用相应标识功能。按用户指示，本轮未处理第三方IP权利清理。
