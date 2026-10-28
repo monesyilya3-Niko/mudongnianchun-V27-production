@@ -16,11 +16,11 @@ SYSTEM = '''You are the senior localization editor for a precision-controlled an
 Translate the supplied Chinese Markdown production prompt into precise, natural English for a video model.
 This is NOT a summary and NOT a rewrite. Preserve the complete Markdown structure, all headings, tables, bullets, code fences, ordering, and every production constraint.
 Hard invariants:
-- Keep every identifier, Shot_###, Manus15s_###, frame number, timestamp, FPS, resolution, focal length, color temperature, unit, filename, export token, weight, numeric value, and backticked token exactly unchanged.
+- Keep every identifier, Shot_###, Unit15s_###, frame number, timestamp, FPS, resolution, focal length, color temperature, unit, filename, export token, weight, numeric value, and backticked token exactly unchanged.
 - Keep all Japanese dialogue, Japanese on-screen text, exact quoted text, proper names, asset filenames, and technical codes verbatim. Preserve Chinese source text only when it is an exact in-frame text/asset label or a quoted Japanese translation note; otherwise translate it.
 - Translate director labels, section labels, audio-cue prose, technical instructions, negative prompts, and the canonical visual/language rule into English.
 - Do not introduce artist/studio names or change the style direction. Render the style as original, high-quality Japanese theatrical animation-film visual language, with the stated anti-cheap-AI constraints.
-- Keep the opening title as '# Manus15s_###' and keep the English output self-contained.
+- Keep the opening title as '# Unit15s_###' and keep the English output self-contained.
 - Output only the translated Markdown file, with no preface, explanation, or code-fence wrapper around the whole file.'''
 
 def quoted_japanese(text):
@@ -34,7 +34,7 @@ def backticks(text):
 
 def invariants(src, out, n):
     errs=[]
-    if not out.lstrip().startswith(f'# Manus15s_{n:03d}'):
+    if not out.lstrip().startswith(f'# Unit15s_{n:03d}'):
         errs.append('bad title')
     if out.count('```text') != src.count('```text'):
         errs.append('code-fence count')
@@ -42,7 +42,7 @@ def invariants(src, out, n):
         if tok not in out: errs.append(f'missing backtick {tok}')
     for tok in quoted_japanese(src):
         if tok not in out: errs.append(f'missing quoted text {tok[:30]}')
-    for tok in re.findall(r'\b(?:Shot|Manus15s)_\d{3}\b', src):
+    for tok in re.findall(r'\b(?:Shot|Unit15s)_\d{3}\b', src):
         if out.count(tok) < src.count(tok): errs.append(f'identifier count {tok}')
     for tok in re.findall(r'\b\d+(?:\.\d+)?(?:fps|mm|K|dB|Hz|BPM|px|s)\b', src):
         if tok not in out: errs.append(f'missing tech token {tok}')
@@ -56,7 +56,7 @@ def translate_one(path):
     n=int(path.stem.split('_')[-1])
     src=path.read_text(encoding='utf-8')
     # Resume only if an existing output passes the deterministic gate.
-    existing=OUT/f'Manus15s_{n:03d}.md'
+    existing=OUT/f'Unit15s_{n:03d}.md'
     if existing.exists():
         txt=existing.read_text(encoding='utf-8')
         e=invariants(src,txt,n)
@@ -85,7 +85,7 @@ def translate_one(path):
     return n,'failed',last
 
 def main():
-    files=sorted(SRC.glob('Manus15s_*.md'))
+    files=sorted(SRC.glob('Unit15s_*.md'))
     results=[]
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
         futs={ex.submit(translate_one,p):p for p in files}
